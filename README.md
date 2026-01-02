@@ -1,41 +1,41 @@
-GitHub Trending CLI 🐙📈
+# 🐙 GitHub Trending CLI 📈
 
-A Dockerized command-line tool to discover trending GitHub repositories with advanced filtering, rate-limit awareness, and token-based authentication.
+A **Dockerized command-line tool** to discover trending GitHub repositories with advanced filtering, rate-limit awareness, and token-based authentication.
 
-✔️ Zero setup required — run instantly using Docker
-✔️ Works consistently across environments
-✔️ Designed for reviewers & developers
+✅ Zero setup required — run instantly using Docker  
+✅ Works consistently across environments  
+✅ Designed for reviewers & developers  
 
-🚀 Quick Start (Recommended – Docker)
+---
 
-Prerequisite: Docker installed
+## 🚀 Quick Start (Recommended – Docker)
 
+> **Prerequisite:** Docker installed
+
+```bash
 docker run --rm gitclitrending
-
 Run with options
+bash
+Copy code
 docker run --rm gitclitrending --duration month --language javascript --limit 20
-
-
-👉 No Node.js installation required.
+👉 No Node.js installation required
 
 ✨ Features
+🔍 Smart Filtering – Filter by language, stars, and time range
 
-🔍 Smart Filtering: Filter by language, stars, and time range
+⚡ Rate Limit Aware – Monitors GitHub API limits with smart backoff
 
-⚡ Rate Limit Aware: Monitors GitHub API limits with smart backoff
+🔐 Token Authentication – Supports GitHub PATs (5,000 req/hr vs 60 req/hr)
 
-🔐 Token Authentication: Supports GitHub PATs (5,000 req/hr vs 60 req/hr)
+🎯 Intuitive CLI – Interactive setup wizard + CLI flags
 
-🎯 Intuitive CLI: Interactive setup wizard + CLI flags
+💾 Persistent Preferences – Saves preferred settings locally
 
-💾 Persistent Preferences: Saves preferred settings locally
+🏗️ Modular Architecture – Clean, maintainable codebase
 
-🏗️ Modular Architecture: Clean, maintainable codebase
-
-📊 Beautiful Output: Color-coded terminal output
+📊 Beautiful Output – Color-coded terminal output
 
 🐳 Docker Image Details
-
 Base image: node:18-alpine
 
 Entry point: CLI executable
@@ -45,12 +45,13 @@ Lightweight & portable
 Ideal for reviewers and demos
 
 🛠️ Local Installation (Optional)
-
 Requires Node.js ≥ 12
 
+bash
+Copy code
 npm install
-
-Run
+bash
+Copy code
 # Interactive setup
 npm start
 
@@ -62,28 +63,16 @@ npm start -- --duration month --limit 20 --language javascript --min-stars 1000
 
 # Help
 npm start -- --help
-
 🔐 Authentication (Optional)
+Create a GitHub Personal Access Token (scope: public_repo) and pass it via CLI or environment variable.
 
-Using a GitHub token increases rate limits significantly.
-
-Create a GitHub Personal Access Token
-
-On GitHub:
-
-Settings → Developer settings → Personal access tokens
-
-Generate token
-
-Scope: public_repo (read-only)
-
-Pass token via CLI
+bash
+Copy code
 npm start -- --token your_token_here
-
-Or via environment variable
+bash
+Copy code
 export GITHUB_TOKEN=your_token_here
 npm start
-
 🧩 Command Options
 Option	Description	Default	Example
 --duration	day / week / month / year	week	--duration month
@@ -93,27 +82,23 @@ Option	Description	Default	Example
 --token	GitHub PAT	none	--token ghp_xxxx
 --reset-prefs	Reset preferences	false	--reset-prefs
 --help	Show help	—	--help
+
 📊 Example Usage
-# Top JavaScript projects from last month
+bash
+Copy code
 docker run --rm gitclitrending --duration month --language javascript --limit 15
-
-# Python repos with 500+ stars this week
 docker run --rm gitclitrending --language python --min-stars 500
-
-# Authenticated usage
 docker run --rm gitclitrending --token ghp_your_token_here --limit 50
-
 ⏱️ Rate Limiting Behavior
+Unauthenticated: 60 requests/hour
 
-Without authentication: 60 requests/hour
+Authenticated: 5,000 requests/hour
 
-With GitHub token: 5,000 requests/hour
-
-Displays remaining quota after requests
-
-Uses exponential backoff on limit hits
+Displays remaining quota and uses exponential backoff
 
 📁 Project Structure
+pgsql
+Copy code
 .
 ├── bin/
 │   └── index.js
@@ -122,7 +107,3 @@ Uses exponential backoff on limit hits
 ├── .dockerignore
 ├── package.json
 └── README.md
-
-👨‍💻 Author
-
-Animesh Gartia
