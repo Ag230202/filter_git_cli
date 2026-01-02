@@ -1,87 +1,128 @@
-# GitHub Trending CLI
+GitHub Trending CLI 🐙📈
 
-A  command-line tool to discover trending GitHub repositories with advanced filtering, rate-limit awareness, and token-based authentication.
+A Dockerized command-line tool to discover trending GitHub repositories with advanced filtering, rate-limit awareness, and token-based authentication.
 
-## Features
+✔️ Zero setup required — run instantly using Docker
+✔️ Works consistently across environments
+✔️ Designed for reviewers & developers
 
-- 🔍 **Smart Filtering**: Filter by language, stars, and time range
-- ⚡ **Rate Limit Aware**: Monitors API rate limits and implements smart backoff
-- 🔐 **Token Authentication**: Support for GitHub Personal Access Tokens (5,000 req/hr vs 60 req/hr)
-- 🎯 **Intuitive CLI**: Interactive setup wizard and command-line arguments
-- 💾 **Persistent Preferences**: Save your preferred settings
-- 🏗️ **Modular Architecture**: Clean, maintainable, extensible codebase
-- 📊 **Beautiful Output**: Color-coded terminal formatting with detailed info
+🚀 Quick Start (Recommended – Docker)
 
-## Installation
-```bash
+Prerequisite: Docker installed
+
+docker run --rm gitclitrending
+
+Run with options
+docker run --rm gitclitrending --duration month --language javascript --limit 20
+
+
+👉 No Node.js installation required.
+
+✨ Features
+
+🔍 Smart Filtering: Filter by language, stars, and time range
+
+⚡ Rate Limit Aware: Monitors GitHub API limits with smart backoff
+
+🔐 Token Authentication: Supports GitHub PATs (5,000 req/hr vs 60 req/hr)
+
+🎯 Intuitive CLI: Interactive setup wizard + CLI flags
+
+💾 Persistent Preferences: Saves preferred settings locally
+
+🏗️ Modular Architecture: Clean, maintainable codebase
+
+📊 Beautiful Output: Color-coded terminal output
+
+🐳 Docker Image Details
+
+Base image: node:18-alpine
+
+Entry point: CLI executable
+
+Lightweight & portable
+
+Ideal for reviewers and demos
+
+🛠️ Local Installation (Optional)
+
+Requires Node.js ≥ 12
+
 npm install
-```
 
-## Quick Start
-```bash
-# First run - interactive setup wizard
+Run
+# Interactive setup
 npm start
 
 # Using saved preferences
 npm start
 
-# Override with options
+# Override preferences
 npm start -- --duration month --limit 20 --language javascript --min-stars 1000
 
-# Show help
+# Help
 npm start -- --help
-```
 
-## Authentication (Optional)
+🔐 Authentication (Optional)
 
-To increase your rate limit from 60 to 5,000 requests per hour, add your GitHub Personal Access Token:
+Using a GitHub token increases rate limits significantly.
 
-1. **Create a GitHub Personal Access Token**:
-   - Go to Settings > Developer settings > Personal access tokens
-   - Click "Generate new token"
-   - Select scope: `public_repo` (read-only access)
-   - Copy the token
+Create a GitHub Personal Access Token
 
-2. **Add to CLI**:
-```bash
-   npm start -- --token your_token_here
-```
+On GitHub:
 
-Or set environment variable:
-```bash
+Settings → Developer settings → Personal access tokens
+
+Generate token
+
+Scope: public_repo (read-only)
+
+Pass token via CLI
+npm start -- --token your_token_here
+
+Or via environment variable
 export GITHUB_TOKEN=your_token_here
 npm start
-```
 
-## Command Options
-
-| Option | Description | Default | Example |
-|--------|-------------|---------|---------|
-| `--duration` | Time range: day, week, month, year | week | `--duration month` |
-| `--limit` | Number of results (1-100) | 10 | `--limit 20` |
-| `--language` | Filter by programming language | none | `--language javascript` |
-| `--min-stars` | Minimum star count | 0 | `--min-stars 1000` |
-| `--token` | GitHub Personal Access Token | none | `--token ghp_xxxx` |
-| `--reset-prefs` | Reset saved preferences | false | `--reset-prefs` |
-| `--help` | Show help message | - | `--help` |
-
-## Example Usage
-```bash
+🧩 Command Options
+Option	Description	Default	Example
+--duration	day / week / month / year	week	--duration month
+--limit	Results (1–100)	10	--limit 20
+--language	Programming language	none	--language javascript
+--min-stars	Minimum stars	0	--min-stars 1000
+--token	GitHub PAT	none	--token ghp_xxxx
+--reset-prefs	Reset preferences	false	--reset-prefs
+--help	Show help	—	--help
+📊 Example Usage
 # Top JavaScript projects from last month
-npm start -- --duration month --language javascript --limit 15
+docker run --rm gitclitrending --duration month --language javascript --limit 15
 
-# Python projects with 500+ stars from this week
-npm start -- --language python --min-stars 500
+# Python repos with 500+ stars this week
+docker run --rm gitclitrending --language python --min-stars 500
 
-# All trending repos with authentication
-npm start -- --token ghp_your_token_here --limit 50
-```
+# Authenticated usage
+docker run --rm gitclitrending --token ghp_your_token_here --limit 50
 
-## Rate Limiting
+⏱️ Rate Limiting Behavior
 
-The CLI automatically handles GitHub API rate limits:
-- **Without authentication**: 60 requests per hour
-- **With GitHub token**: 5,000 requests per hour
-- **Monitoring**: Shows remaining requests after each API call
-- **Backoff Strategy**: Implements exponential backoff on rate limit errors
+Without authentication: 60 requests/hour
 
+With GitHub token: 5,000 requests/hour
+
+Displays remaining quota after requests
+
+Uses exponential backoff on limit hits
+
+📁 Project Structure
+.
+├── bin/
+│   └── index.js
+├── src/
+├── Dockerfile
+├── .dockerignore
+├── package.json
+└── README.md
+
+👨‍💻 Author
+
+Animesh Gartia
