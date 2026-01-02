@@ -1,0 +1,26 @@
+{
+  "name": "gitclitrending",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "bin":{
+    "trending-repos":"bin/index.js"
+  },
+  "scripts": {
+    "start":"node bin/index.js",
+    "reset":"node -e \"require('./src/preferences').resetPreferences()\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "github",
+    "cli",
+    "trending",
+    "repositories",
+    "api"
+  ],
+  "author": "Animesh",
+  "license": "ISC",
+  "description": "A CLI tool to discover trending GitHub repositories",
+  "engines": {
+    "node": ">=12.0.0"
+  }
+}
