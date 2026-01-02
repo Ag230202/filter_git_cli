@@ -1,6 +1,6 @@
 # GitHub Trending CLI
 
-A professional command-line tool to discover trending GitHub repositories with advanced filtering, rate-limit awareness, and token-based authentication.
+A  command-line tool to discover trending GitHub repositories with advanced filtering, rate-limit awareness, and token-based authentication.
 
 ## Features
 
